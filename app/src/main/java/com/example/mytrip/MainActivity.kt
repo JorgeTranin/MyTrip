@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -19,28 +20,34 @@ class MainActivity : AppCompatActivity() {
         val btn_Calcular = findViewById<Button>(R.id.btn_Calcular)
 
 
-        // Função para escutar o evento de click no button
+        // Erros para apresentar se caso o usuario nao digitar nada
 
-        if (txt_Distancia.text.isBlank()) {
-            txt_Distancia.error = ("Digite a Distancia! ")
-        }
+        /*      if (txt_Distancia.text.isBlank()) {
+                   txt_Distancia.error = ("Digite a Distancia! ")
+               }
 
-        if (txt_preco.text.isBlank()) {
-            // se o usuario nao digitar nada aparecera esta mensagem de erro
-            txt_preco.error = ("Digite o preço! ")
-        }
+               if (txt_preco.text.isBlank()) {
+                   // se o usuario nao digitar nada aparecera esta mensagem de erro
+                   txt_preco.error = ("Digite o preço! ")
+               }
 
-        if (txt_autonomia.text.isBlank()) {
-            // se o usuario nao digitar nada aparecera esta mensagem de erro
-            txt_autonomia.error = ("Qual a autonomia! ")
-        }
-
+               if (txt_autonomia.text.isBlank()) {
+                   // se o usuario nao digitar nada aparecera esta mensagem de erro
+                   txt_autonomia.error = ("Qual a autonomia! ")
+               }*/
+//android estara escutando o evento de click no botao
         btn_Calcular.setOnClickListener {
-            //calculo é Distancia*preço/autonomida
-            val result = (txt_Distancia.text.toString().toFloat() * txt_preco.text.toString()
-                .toFloat()) / txt_autonomia.text.toString().toFloat()
-            // Apresentação do resultado no textView
-            txt_Resultado.text = result.toString()
+            //see o usuario tiver digitado os valores valores pode passar
+            if (txt_Distancia.text.isNotBlank() && txt_preco.text.isNotBlank() && txt_autonomia.text.isNotBlank()) {
+                //calculo é Distancia*preço/autonomida
+                val result = (txt_Distancia.text.toString().toFloat() * txt_preco.text.toString()
+                    .toFloat()) / txt_autonomia.text.toString().toFloat()
+                // Apresentação do resultado no textView
+                txt_Resultado.text = result.toString()
+            } else {
+                // se o usuario nao preencher nada ira apresentar um popup solicitando as informações
+                Toast.makeText(this, "Informe valores validos!", Toast.LENGTH_LONG).show()
+            }
         }
 
 
