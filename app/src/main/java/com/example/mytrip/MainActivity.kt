@@ -36,13 +36,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_Calcular.setOnClickListener {
-
             //calculo é Distancia*preço/autonomida
             val result = (txt_Distancia.text.toString().toFloat() * txt_preco.text.toString()
                 .toFloat()) / txt_autonomia.text.toString().toFloat()
             // Apresentação do resultado no textView
             txt_Resultado.text = result.toString()
         }
+
 
     }
 
