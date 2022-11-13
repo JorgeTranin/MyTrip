@@ -1,6 +1,7 @@
 package com.example.mytrip
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         val txt_Resultado = findViewById<TextView>(R.id.txt_Resultado)
         val btn_Calcular = findViewById<Button>(R.id.btn_Calcular)
 
+        // Função para escutar o evento de click no button
+
+
+    }
+
+    fun btnCalcular(view: View) {
 
     }
 }
